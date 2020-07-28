@@ -228,13 +228,11 @@ export default {
     };
   },
   methods: {
-    getCurrentLog() {
-      const { data } = axios.get(this.url + "/lastreading");
+    async getCurrentLog() {
+      const { data } = await axios.get(this.url + "/lastreading");
 
       let currTime = data.ph.time;
-      console.log(currTime);
       if (this.lastReadingTime !== currTime) {
-        console.log("aaa");
         this.lastReadingTime = currTime;
         this.currentTemperature = data.temperature.value;
         this.currentOxygen = data.oxygen.value;
@@ -290,7 +288,7 @@ export default {
     );
     this.phChartData = this.formatChartData(data.ph.value, data.ph.time);
 
-    this.getCurrentLog();
+    await this.getCurrentLog();
   },
 };
 </script>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>API</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <p></p>
+            <table class="table">
+                <tbody>
+                    <tr class="table-primary">
+                        <th>GET</th>
+                        <td>/</td>
+                        <td></td>
+                        <td>página atual da API</td>
+                    </tr>
+                    <tr class="table-primary">
+                        <th>GET</th>
+                        <td>/log</td>
+                        <td>?amount=20</td>
+                        <td>Retorna os dados de leitura salvos</td>
+                    </tr>
+                    <tr class="table-primary">
+                        <th>GET</th>
+                        <td>/lastreading</td>
+                        <td></td>
+                        <td>Retorna os dados da última leitura</td>
+                    </tr>
+                    <tr class="table-success">
+                        <th>POST</th>
+                        <td>/save</td>
+                        <td></td>
+                        <td>Salva os dados de leitura no log do server</td>
+                    </tr>
+                    <tr class="table-warning">
+                        <th>PUT</th>
+                        <td>/config/ph</td>
+                        <td>?min=7&max=8</td>
+                        <td>Altera os valores de threshold para o PH</td>
+                    </tr>
+                    <tr class="table-warning">
+                        <th>PUT</th>
+                        <td>/config/temperature</td>
+                        <td>?min=25&max=30</td>
+                        <td>Altera os valores de threshold para a Temperatura</td>
+                    </tr>
+                    <tr class="table-danger">
+                        <th>DELETE</th>
+                        <td>/clear</td>
+                        <td></td>
+                        <td>Limpa os dados de log do server</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div></div>
+        </div>
+    </div>
+</body>
+
+</html>

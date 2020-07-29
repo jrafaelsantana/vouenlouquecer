@@ -144,7 +144,7 @@
       </div>
     </div>
     <div class="row mt-4 ml-4 mr-4">
-      <div class="col card mr-4 pt-3 pb-3" v-if="temperatureChartData.length > 0">
+      <div class="col card pt-3 pb-3" v-if="temperatureChartData.length > 0">
         <line-chart
           :chartData="temperatureChartData"
           :options="temperatureChartOptions"
@@ -167,7 +167,8 @@ export default {
   },
   data() {
     return {
-      url: "http://localhost:5000",
+      url: "http://8aa06e999670.ngrok.io",
+      loaded: false,
       currentTemperature: 0,
       currentPH: 0,
       currentOxygen: 0,
@@ -184,6 +185,7 @@ export default {
       oxygenChartData: [],
       temperatureChartOptions: {
         responsive: true,
+        animation: false,
         maintainAspectRatio: false,
         scales: {
           yAxes: [
@@ -227,6 +229,9 @@ export default {
       lastReadingTime: "",
     };
   },
+  created() {
+    this.interval = setInterval(() => this.getCurrentLog(), 10000);
+  },
   methods: {
     async getCurrentLog() {
       const { data } = await axios.get(this.url + "/lastreading");
@@ -266,6 +271,7 @@ export default {
       arrChart.push({ date, total: currValue });
       return arrChart;
     },
+
     formatChartData(arrValue, arrDate) {
       let arrAux = [];
       for (let i = 0; i < arrValue.length; i++) {
